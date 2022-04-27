@@ -1,0 +1,25 @@
+<ng-container *ngIf="!pinCode; else pin">
+    <h2>Didn't receive a code?</h2>
+    <p>In case you did not receive a code, this can be due to the following reasons:</p>
+    <ul>
+        <li>The SMS service is (temporarily) unavailable, so the code could not be sent.</li>
+        <li>The mail service is (temporarily) unavailable, so the code could not be sent.</li>
+    </ul>
+    <p>
+        If the problem persists, consult your administrator.
+        <ng-container *ngIf="getPhonenumber() | async as phonenumber">
+            (<a href="tel:{{ phonenumber }}">{{ phonenumber }}</a
+            >)
+        </ng-container>
+    </p>
+</ng-container>
+
+<ng-template #pin>
+    <div class="control-toolbar"></div>
+    <h2>Forgot PIN?</h2>
+    <p>
+        If you have forgotten your personal pin code, you can log in again with username and password.
+        You can then create a new pin code via the account menu. Do you want to log in with username and
+        password?
+    </p>
+</ng-template>
