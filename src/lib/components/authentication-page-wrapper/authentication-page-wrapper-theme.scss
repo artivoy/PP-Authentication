@@ -1,0 +1,23 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use 'libs/common' as colors;
+
+@mixin mq-authentication-page-wrapper($theme, $typography) {
+    $primary: map.get($theme, primary);
+    $accent: map.get($theme, accent);
+
+    mq-authentication-page-wrapper {
+        color: mat.get-color-from-palette($accent, 900);
+        .auth-form-wrapper {
+            font-size: mat.font-size($typography, subheading-2);
+            background-color: rgba(mat.get-color-from-palette($accent, 300), 0.85) !important;
+        }
+
+        background-image: map.get($theme, login-background);
+
+        div.mat-select-arrow-wrapper {
+            padding-right: 20px;
+            height: 57px;
+        }
+    }
+}

@@ -1,0 +1,125 @@
+<!-- Loading bar -->
+<mat-progress-spinner mode="indeterminate" *ngIf="loading$ | async"></mat-progress-spinner>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <ng-container [ngSwitch]="formView$ | async">
+        <!-- Login form container -->
+        <ng-container *ngSwitchCase="EAuthenticationFormType.login" [formGroupName]="EAuthenticationFormType.login">
+            <fieldset [disabled]="loading$ | async">
+                <div class="field-wrapper with-icon">
+                    <mqm-username
+                        [formGroup]="form"
+                        [groupName]="EAuthenticationFormType.login"
+                        [controlName]="FormControls.username"
+                    >
+                    </mqm-username>
+                </div>
+
+                <div class="field-wrapper with-icon">
+                    <mqm-password
+                        [formGroup]="form"
+                        [groupName]="EAuthenticationFormType.login"
+                        [controlName]="FormControls.password"
+                    >
+                    </mqm-password>
+                </div>
+            </fieldset>
+
+            <!-- Submit login form -->
+            <button
+                type="submit"
+                mat-flat-button
+                color="primary"
+                [disabled]="loading$ | async"
+                data-test-id="signin_button"
+            >
+                Inloggen
+            </button>
+        </ng-container>
+
+        <!-- Verify code form container -->
+        <ng-container
+            *ngSwitchCase="EAuthenticationFormType.verify"
+            [formGroupName]="EAuthenticationFormType.verify"
+            autocomplete="off"
+        >
+            <!-- header verify code message -->
+            <div class="pin-header-message">
+                You have a {{ getVerifyMethod() }} received with a verification code. Fill this in below.
+                <br />
+                <p>
+                    Optionally create a PIN and use it instead of a username and password. That
+                    makes it easier to log in in future.
+                </p>
+            </div>
+
+            <fieldset [disabled]="loading$ | async">
+                <div class="field-wrapper">
+                    <input
+                        type="text"
+                        matInput
+                        required
+                        #verificationCodeInput
+                        formControlName="verificationCode"
+                        placeholder="Code"
+                    />
+                </div>
+            </fieldset>
+            <fieldset [disabled]="loading$ | async" *ngIf="!dialogRef">
+                <div [formGroupName]="EAuthenticationFormType.pin">
+                    <div class="field-wrapper with-icon pin-code">
+                        <mqm-password
+                            [formGroup]="form"
+                            [groupName]="EAuthenticationFormType.verify"
+                            [nestedGroupName]="EAuthenticationFormType.pin"
+                            [controlName]="FormControls.pin"
+                            inputmode="number"
+                            pattern="[0-9]*"
+                            placeholder="Geef een nieuwe pincode op"
+                        >
+                        </mqm-password>
+                    </div>
+                    <div class="field-wrapper with-icon pin-code">
+                        <mqm-password
+                            [formGroup]="form"
+                            [groupName]="EAuthenticationFormType.verify"
+                            [nestedGroupName]="EAuthenticationFormType.pin"
+                            [controlName]="FormControls.confirmPin"
+                            inputmode="number"
+                            pattern="[0-9]*"
+                            placeholder="Bevestig de nieuwe pincode"
+                        >
+                        </mqm-password>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div
+                class="pin-code-validation-errors"
+                [mqValidationErrorMessagesAuth]="verificationCodeFields[EAuthenticationFormType.pin]"
+            ></div>
+
+            <!-- Submit verify form -->
+            <button
+                type="submit"
+                mat-flat-button
+                color="primary"
+                [disabled]="(loading$ | async) || form.get(EAuthenticationFormType.verify)?.invalid"
+            >
+                Doorgaan
+            </button>
+            <button mat-button class="auth-help" (click)="openNoCodeHelp()" [disabled]="loading$ | async">
+                Geen verificatiecode ontvangen?
+            </button>
+        </ng-container>
+
+        <!-- No code received container -->
+        <ng-container *ngSwitchCase="EAuthenticationFormType.no_code">
+            <mqm-auth-help></mqm-auth-help>
+
+            <button mat-flat-button (click)="closeNoCodeHelp()" color="primary" [disabled]="loading$ | async">
+                Terug
+            </button>
+        </ng-container>
+    </ng-container>
+</form>

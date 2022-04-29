@@ -1,0 +1,50 @@
+{
+    "extends": "../../.eslintrc.json",
+    "ignorePatterns": ["!**/*", "libs/authentication/src/test.ts"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["libs/authentication/tsconfig.lib.json"]
+            },
+            "rules": {
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": ["mq", "mqm"],
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": ["mq", "mqm"],
+                        "style": "camelCase"
+                    }
+                ],
+                "@typescript-eslint/consistent-type-definitions": "error",
+                "@typescript-eslint/dot-notation": "off",
+                "@typescript-eslint/explicit-member-accessibility": [
+                    "off",
+                    {
+                        "accessibility": "explicit"
+                    }
+                ],
+                "@typescript-eslint/no-require-imports": "off",
+                "arrow-parens": ["off", "always"],
+                "brace-style": ["error"],
+                "default-case": "error",
+                "import/order": "error",
+                "space-in-parens": ["off", "never"]
+            },
+            "extends": ["plugin:@nrwl/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"]
+        },
+        {
+            "files": ["*.html"],
+            "rules": {},
+            "extends": ["plugin:@nrwl/nx/angular-template", "plugin:@angular-eslint/template/recommended"]
+        }
+    ]
+}

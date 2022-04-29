@@ -1,0 +1,13 @@
+<mq-authentication-page-wrapper [showLogo]="formView === 'login' || isOauthActive">
+    <ng-container *ngIf="isOauthActive; else prLoginMethod">
+        <mq-oauth-splash-screen></mq-oauth-splash-screen>
+    </ng-container>
+    <ng-template #prLoginMethod>
+        <ng-container *ngIf="pinIsSet$ | async; else logIn">
+            <mq-pin-code-authorization></mq-pin-code-authorization>
+        </ng-container>
+        <ng-template #logIn>
+            <mq-authentication></mq-authentication>
+        </ng-template>
+    </ng-template>
+</mq-authentication-page-wrapper>

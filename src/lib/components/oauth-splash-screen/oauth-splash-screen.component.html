@@ -1,0 +1,12 @@
+<ng-container *ngIf="!(oauthErrors$ | async)?.length; else errors">
+    <p>You will be logged in automatically. One moment please.</p>
+    <p>If you are not automatically forwarded, please contact your administrative organization.</p>
+    <button *ngIf="showRefreshButton$ | async" mat-flat-button color="primary" (click)="refresh()">
+        Try again
+    </button>
+</ng-container>
+<ng-template #errors>
+    <p>An error occurred while logging in:</p>
+    <p *ngFor="let error of oauthErrors$ | async">{{ error }}</p>
+    <p>Contact your management organization.</p>
+</ng-template>

@@ -1,0 +1,171 @@
+<!-- Loading bar -->
+<mat-progress-bar mode="indeterminate" *ngIf="loading$ | async"></mat-progress-bar>
+
+<div class="control-toolbar">
+    <button
+        type="button"
+        (click)="onCancelClick()"
+        [disabled]="loading$ | async"
+        mat-icon-button
+        aria-label="Close dialog"
+    >
+        <mat-icon inline="true">close</mat-icon>
+    </button>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <ng-container [ngSwitch]="formView$ | async">
+        <!-- Login form container -->
+        <ng-container *ngSwitchCase="EAuthenticationFormType.login" [formGroupName]="EAuthenticationFormType.login">
+            <div class="pin-step-header">
+                <div class="pin-step-title">Set PIN step 1/3</div>
+            </div>
+            <div class="pin-step-text">
+                Create a PIN and use it instead of a username and password. That makes it
+                easier to login.
+            </div>
+            <fieldset [disabled]="loading$ | async">
+                <div class="field-wrapper with-icon">
+                    <mqm-username
+                        [formGroup]="form"
+                        [groupName]="EAuthenticationFormType.login"
+                        [controlName]="FormControls.username"
+                    >
+                    </mqm-username>
+                </div>
+
+                <div class="field-wrapper with-icon">
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <mqm-password
+                        [formGroup]="form"
+                        [groupName]="EAuthenticationFormType.login"
+                        [controlName]="FormControls.password"
+                    >
+                    </mqm-password>
+                </div>
+            </fieldset>
+
+            <div class="fast-login-buttons">
+                <!-- Submit login form -->
+                <button mat-button type="button" (click)="onCancelClick()" [disabled]="loading$ | async">
+                    Cancel
+                </button>
+                <button type="submit" mat-flat-button color="primary" [disabled]="loading$ | async">Submit</button>
+            </div>
+        </ng-container>
+
+        <!-- Verify code form container -->
+        <ng-container *ngSwitchCase="EAuthenticationFormType.verify" [formGroupName]="EAuthenticationFormType.verify">
+            <!-- header verify code message -->
+            <div class="pin-step-header">
+                <div class="pin-step-title">Set PIN step 2/3</div>
+            </div>
+            <div class="pin-step-text"></div>
+            <fieldset [disabled]="loading$ | async">
+                <div class="field-wrapper">
+                    <input
+                        inputmode="number"
+                        pattern="[0-9]*"
+                        type="text"
+                        matInput
+                        required
+                        formControlName="verificationCode"
+                        placeholder="Fill in the just received {{ getVerifyMethod() }} code in."
+                    />
+                </div>
+            </fieldset>
+            <div class="button-info">
+                <button
+                    mat-button
+                    type="button"
+                    color="primary"
+                    (click)="openNoCodeHelp()"
+                    [disabled]="loading$ | async"
+                >
+                    Didn't receive a code?
+                </button>
+            </div>
+            <!-- Submit verify form -->
+            <div class="fast-login-buttons">
+                <!-- Submit login form -->
+                <button
+                    mat-button
+                    type="button"
+                    color="primary"
+                    (click)="onCancelClick()"
+                    [disabled]="loading$ | async"
+                >
+                    Cancel
+                </button>
+                <button cdkFocusInitial type="submit" mat-flat-button color="primary" [disabled]="loading$ | async">
+                    Submit
+                </button>
+            </div>
+        </ng-container>
+
+        <!-- Pin install form container -->
+        <ng-container *ngSwitchCase="EAuthenticationFormType.pin" [formGroupName]="EAuthenticationFormType.pin">
+            <div class="pin-step-header">
+                <div class="pin-step-title">Set PIN step 3/3</div>
+            </div>
+            <div class="pin-step-text"></div>
+            <fieldset [disabled]="loading$ | async">
+                <div class="field-wrapper with-icon">
+                    <mqm-password
+                        [formGroup]="form"
+                        [groupName]="EAuthenticationFormType.pin"
+                        [controlName]="FormControls.pin"
+                        inputmode="number"
+                        pattern="[0-9]*"
+                        placeholder="Enter a new PIN code"
+                    >
+                    </mqm-password>
+                </div>
+                <div class="field-wrapper with-icon pin-code">
+                    <mqm-password
+                        [formGroup]="form"
+                        [groupName]="EAuthenticationFormType.pin"
+                        [controlName]="FormControls.confirmPin"
+                        inputmode="number"
+                        pattern="[0-9]*"
+                        placeholder="Confirm the new PIN code"
+                    >
+                    </mqm-password>
+                </div>
+            </fieldset>
+            <div [mqValidationErrorMessagesAuth]="formFields[EAuthenticationFormType.pin]"></div>
+            <!-- Submit verify form -->
+            <div class="fast-login-buttons">
+                <!-- Submit login form -->
+                <button
+                    mat-button
+                    type="button"
+                    color="primary"
+                    (click)="onCancelClick()"
+                    [disabled]="loading$ | async"
+                >
+                    Cancel
+                </button>
+                <button type="submit" mat-flat-button color="primary" [disabled]="(loading$ | async) || form.invalid">
+                    Submit
+                </button>
+            </div>
+        </ng-container>
+
+        <!-- No code received container -->
+        <ng-container *ngSwitchCase="EAuthenticationFormType.no_code">
+            <mqm-auth-help></mqm-auth-help>
+            <div class="window-footer">
+                <button
+                    mat-flat-button
+                    type="button"
+                    (click)="closeNoCodeHelp()"
+                    color="primary"
+                    [disabled]="loading$ | async"
+                >
+                    Back
+                </button>
+            </div>
+        </ng-container>
+    </ng-container>
+</form>

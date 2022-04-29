@@ -1,0 +1,133 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading$ | async"></mat-progress-bar>
+<div class="control-toolbar">
+    <button
+        type="button"
+        (click)="onCancelClick()"
+        [disabled]="loading$ | async"
+        mat-icon-button
+        aria-label="Close dialog"
+    >
+        <mat-icon inline="true">close</mat-icon>
+    </button>
+</div>
+
+<ng-container *ngIf="pinIsSet$ | async; else logIn">
+    <mq-pin-code-authorization [redirectOnIsLoggedIn]="redirectOnIsLoggedIn"></mq-pin-code-authorization>
+</ng-container>
+
+<ng-template #logIn>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+        <ng-container [ngSwitch]="formView$ | async">
+            <!-- Login form container -->
+            <ng-container *ngSwitchCase="EAuthenticationFormType.login" [formGroupName]="EAuthenticationFormType.login">
+                <div class="fast-login-header">
+                    <div class="fast-login-title">Session expired, re-login is required</div>
+                </div>
+                <div class="fast-login-text">
+                    Due to inactivity, your login session has expired, requiring re-login. Log in again to
+                    to be able to continue working immediately
+                </div>
+
+                <fieldset [disabled]="loading$ | async">
+                    <div class="field-wrapper with-icon">
+                        <mqm-username
+                            [formGroup]="form"
+                            [groupName]="EAuthenticationFormType.login"
+                            [controlName]="FormControls.username"
+                        >
+                        </mqm-username>
+                    </div>
+
+                    <div class="field-wrapper with-icon">
+                        <mqm-password
+                            [formGroup]="form"
+                            [groupName]="EAuthenticationFormType.login"
+                            [controlName]="FormControls.password"
+                        >
+                        </mqm-password>
+                    </div>
+                </fieldset>
+                <!-- Submit login form -->
+                <div mat-dialog-actions class="fast-login-buttons">
+                    <button
+                        mat-button
+                        type="button"
+                        color="primary"
+                        (click)="onCancelClick()"
+                        [disabled]="loading$ | async"
+                    >
+                        Close
+                    </button>
+
+                    <button type="submit" mat-flat-button color="primary" [disabled]="loading$ | async">
+                        Login
+                    </button>
+                </div>
+            </ng-container>
+
+            <!-- Verify code form container -->
+            <ng-container
+                *ngSwitchCase="EAuthenticationFormType.verify"
+                [formGroupName]="EAuthenticationFormType.verify"
+            >
+                <div class="fast-login-header">
+                    <div class="fast-login-title">Session expired, re-login is required</div>
+                </div>
+                <!-- header verify code message -->
+                <div class="fast-login-text">
+                    Enter the code you just sent via
+                    {{ getVerifyMethod() }} have received
+                </div>
+
+                <fieldset [disabled]="loading$ | async">
+                    <div class="field-wrapper">
+                        <input type="text" matInput required formControlName="verificationCode" placeholder="Code" />
+                    </div>
+                </fieldset>
+
+                <button
+                    type="button"
+                    mat-button
+                    color="primary"
+                    (click)="openNoCodeHelp()"
+                    [disabled]="loading$ | async"
+                >
+                Didn't receive a code?
+                </button>
+
+                <div class="fast-login-buttons">
+                    <button
+                        type="button"
+                        mat-button
+                        color="primary"
+                        (click)="onCancelClick()"
+                        [disabled]="loading$ | async"
+                    >
+                        Back
+                    </button>
+
+                    <!-- Submit verify form -->
+                    <button type="submit" mat-flat-button color="primary" [disabled]="loading$ | async">
+                        Submit
+                    </button>
+                </div>
+            </ng-container>
+
+            <!-- No code received container -->
+            <ng-container *ngSwitchCase="EAuthenticationFormType.no_code">
+                <mqm-auth-help></mqm-auth-help>
+                <div class="window-footer">
+                    <button
+                        type="button"
+                        mat-flat-button
+                        (click)="closeNoCodeHelp()"
+                        color="primary"
+                        [disabled]="loading$ | async"
+                    >
+                        Back
+                    </button>
+                </div>
+            </ng-container>
+        </ng-container>
+    </form>
+</ng-template>

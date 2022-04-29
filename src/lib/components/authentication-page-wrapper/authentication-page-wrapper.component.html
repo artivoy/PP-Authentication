@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <div class="auth-form-wrapper">
+        <!-- Logo -->
+        <div class="logo" *ngIf="showLogo">
+            <img src="assets/app-logo.png" [alt]="appName" class="logo-img" />
+            <span class="logo-text">{{ appShortName }}</span>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+mq-pin-code-setup {
+    .control-toolbar {
+        display: flex;
+        margin: -18px -18px 0;
+        width: auto;
+        flex-flow: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        z-index: 9999;
+        position: relative;
+        .mat-icon-button {
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            margin-right: 4px;
+            margin-bottom: 3px;
+            mat-icon {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .open-more-info {
+        color: #54a2f4;
+        cursor: pointer;
+    }
+    .visibility {
+        left: calc(100% - 35px) !important;
+        cursor: pointer;
+    }
+    mat-progress-bar {
+        position: absolute;
+        top: 0;
+    }
+    .pin-step-header {
+        font-weight: 600;
+    }
+    .pin-step-text {
+        padding-bottom: 20px;
+    }
+    .fast-login-buttons {
+        justify-content: flex-end;
+        display: flex;
+    }
+    .button-info {
+        display: flex;
+        justify-content: left;
+    }
+
+    form {
+        width: 100%;
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        .field-wrapper {
+            padding: 0;
+            height: 60px;
+            width: 100%;
+            margin-bottom: 26px;
+            position: relative;
+
+            &.with-icon {
+                mat-icon {
+                    vertical-align: middle;
+                    position: absolute;
+                    left: 16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                input {
+                    padding-left: 56px;
+                    padding-right: 24px;
+                }
+
+                input.pin-code {
+                    padding-left: 16px;
+                    padding-right: 24px;
+                }
+            }
+
+            input {
+                border: 0;
+                &.ng-invalid.ng-dirty,
+                &.ng-invalid.ng-touched {
+                    border-color: #eb5757;
+                    border-width: 1px;
+                    border-style: solid;
+                }
+
+                width: 100%;
+                height: 100%;
+                padding: 0 16px;
+                box-sizing: border-box;
+
+                border-radius: 2px;
+
+                margin: 0;
+                border: 0;
+                display: inline-block;
+                vertical-align: middle;
+                white-space: normal;
+                line-height: 1;
+
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+    }
+    .window-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

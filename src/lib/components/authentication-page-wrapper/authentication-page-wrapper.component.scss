@@ -1,0 +1,49 @@
+mq-authentication-page-wrapper {
+    height: 100%;
+    display: flex;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: auto;
+    padding: 16px;
+    box-sizing: border-box;
+    flex-flow: column;
+    align-items: center;
+
+    .wrapper {
+        display: flex;
+        flex: 1 1 100%;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+
+        .auth-form-wrapper {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 56px 25px 18px;
+            margin-bottom: 26px;
+            max-width: 410px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+            background-color: rgba(229, 229, 229, 0.9);
+            border-radius: 5px;
+
+            .logo-img,
+            .logo-text,
+            .header-message {
+                margin-bottom: 26px;
+            }
+
+            .logo-text {
+                display: block;
+                color: rgba(0, 64, 134, 1);
+                font-size: 32px;
+            }
+        }
+    }
+}

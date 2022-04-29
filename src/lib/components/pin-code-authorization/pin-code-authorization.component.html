@@ -1,0 +1,114 @@
+<ng-container [ngSwitch]="showForgotten | async">
+    <!-- Login form container -->
+    <ng-container *ngSwitchCase="false">
+        <div class="fast-login-header">
+            <div class="fast-login-title">Session expired, re-login is required</div>
+            <div class="fast-login-text pin-code-header">
+                Due to inactivity, your login session has expired, requiring re-login. Log in again to
+                to be able to continue working immediately
+            </div>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+            <div class="field-wrapper">
+                <mat-select [formControl]="refreshTokenControl" (selectionChange)="logOut($event)" required>
+                    <mat-select-trigger>
+                        <div class="selection selected">
+                            <div class="selection-person">
+                                <div
+                                    class="selection-icon"
+                                    [ngStyle]="{
+                                        'background-color': selectedUser?.color
+                                    }"
+                                >
+                                    {{ selectedUser?.initials }}
+                                </div>
+                                <div class="selection-person-block">
+                                    <div class="selection-person-name">
+                                        {{ selectedUser?.name }}
+                                    </div>
+                                    <div class="selection-person-info">
+                                        {{ selectedUser?.speciality }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let user of pinCodeUsers" [value]="user" class="pin-code-select">
+                        <div class="selection">
+                            <div class="selection-person">
+                                <div
+                                    class="selection-icon"
+                                    [ngStyle]="{
+                                        'background-color': user.color
+                                    }"
+                                >
+                                    {{ user.initials }}
+                                </div>
+                                <div class="selection-person-block">
+                                    <div class="selection-person-name">
+                                        {{ user.name }}
+                                    </div>
+                                    <div class="selection-person-info">
+                                        {{ user.speciality }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="selection-delete">
+                                <button
+                                    type="button"
+                                    (click)="deleteUserFromList(user)"
+                                    mat-icon-button
+                                    aria-label="Close dialog"
+                                    matTooltip="Gebruiker uit lijst verwijderen"
+                                    matTooltipPosition="right"
+                                >
+                                    <mat-icon inline="true">close</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-option>
+                    <mat-option (click)="openLogIn()"> Use another account </mat-option>
+                </mat-select>
+            </div>
+            <div class="field-wrapper with-icon pin-code">
+                <mqm-password
+                    [formGroup]="form"
+                    [controlName]="FormControls.pin"
+                    inputmode="number"
+                    pattern="[0-9]*"
+                    placeholder="Pincode"
+                >
+                </mqm-password>
+            </div>
+
+            <div class="pin-login-buttons">
+                <div class="buttons-block">
+                    <button type="submit" mat-flat-button color="primary" [disabled]="form!.invalid">Inloggen</button>
+                    <button
+                        class="on-cancel-button"
+                        mat-button
+                        type="button"
+                        color="primary"
+                        (click)="onCancelClick()"
+                        [disabled]="loading$ | async"
+                    >
+                        Sluiten
+                    </button>
+                </div>
+                <div>
+                    <button mat-button class="auth-help" color="primary" (click)="openPinCodeForgotten()">
+                        Forgot PIN?
+                    </button>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="true">
+        <mqm-auth-help [pinCode]="true"></mqm-auth-help>
+        <div class="pin-forgot-buttons">
+            <button mat-button type="button" (click)="closePinCodeForgotten()" color="primary">No</button>
+            <button mat-flat-button type="button" (click)="openLogIn()" color="primary">Yes</button>
+        </div>
+    </ng-container>
+</ng-container>

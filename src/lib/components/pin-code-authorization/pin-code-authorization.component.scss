@@ -1,0 +1,130 @@
+mq-pin-code-authorization {
+    .visibility {
+        left: calc(100% - 35px) !important;
+        cursor: pointer;
+    }
+
+    .pin-code-select {
+        height: 4em !important;
+    }
+
+    .field-wrapper {
+        padding: 0;
+        height: 60px;
+        width: 100%;
+        margin-bottom: 26px;
+        position: relative;
+        display: flex;
+        text-align: start;
+        .field-wrapper-icon {
+            margin: auto;
+            padding-left: 9px;
+            font-size: 26px;
+        }
+
+        input {
+            width: 100%;
+            height: 100%;
+            padding: 0 16px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-radius: 2px;
+            margin: 0;
+            border: 0;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: normal;
+            line-height: 1;
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        &.with-icon {
+            mat-icon {
+                vertical-align: middle;
+                position: absolute;
+                left: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            input {
+                padding-left: 56px;
+                padding-right: 24px;
+            }
+        }
+    }
+
+    .control-toolbar {
+        display: flex;
+        margin: -18px -18px 0;
+        width: auto;
+        flex-flow: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        z-index: 9999;
+        position: relative;
+        .mat-icon-button {
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            margin-right: 4px;
+            margin-bottom: 3px;
+            mat-icon {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+.selection {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.selection-person {
+    display: flex;
+    align-items: center;
+}
+.selection-person-block {
+    line-height: normal;
+    padding-left: 20px;
+    text-align: start;
+}
+.selection-person-name {
+    font-size: 14px;
+}
+.selection-person-info {
+    font-size: 10px;
+}
+.selection-icon {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
+.pin-login-buttons {
+    display: grid;
+
+    button {
+        width: 100%;
+        height: 60px;
+        text-transform: uppercase;
+    }
+    .on-cancel-button {
+        display: none;
+        order: 1;
+    }
+}
+.selected {
+    padding: 10px;
+}
+.fast-login-header {
+    display: none;
+}
+.pin-forgot-buttons {
+    display: flex;
+    justify-content: flex-end;
+}

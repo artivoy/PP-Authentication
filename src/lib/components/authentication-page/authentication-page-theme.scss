@@ -1,0 +1,14 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use 'libs/common' as colors;
+
+@mixin mq-authentication-page($theme, $typography) {
+    $dark: mat.define-palette(colors.$mq-dark);
+
+    mq-authentication-page {
+        div.mat-select-arrow-wrapper {
+            padding-right: 20px;
+            height: 57px;
+        }
+    }
+}

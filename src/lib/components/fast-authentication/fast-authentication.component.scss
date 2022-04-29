@@ -1,0 +1,159 @@
+mq-fast-authentication {
+    .control-toolbar {
+        display: flex;
+        margin: -18px -18px 0;
+        width: auto;
+        flex-flow: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        z-index: 9999;
+        position: relative;
+        .mat-icon-button {
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            margin-right: 4px;
+            margin-bottom: 3px;
+            mat-icon {
+                font-size: 24px;
+            }
+        }
+    }
+    .visibility {
+        left: calc(100% - 35px) !important;
+        cursor: pointer;
+    }
+    mat-progress-bar {
+        position: absolute;
+        top: 0;
+    }
+    .header-message,
+    .footer-message {
+        text-align: center;
+        margin-top: 26px;
+    }
+
+    form {
+        .fast-login-text {
+            padding-bottom: 20px;
+        }
+        width: 100%;
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fast-login-buttons {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .fast-login-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 7px;
+        }
+
+        .field-wrapper {
+            padding: 0;
+            height: 60px;
+            width: 100%;
+            margin-bottom: 26px;
+            position: relative;
+
+            &.with-icon {
+                mat-icon {
+                    vertical-align: middle;
+                    position: absolute;
+                    left: 16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                input {
+                    padding-left: 56px;
+                    padding-right: 24px;
+                }
+            }
+
+            input {
+                &.ng-invalid.ng-dirty,
+                &.ng-invalid.ng-touched {
+                    border-color: #eb5757;
+                    border-width: 1px;
+                    border-style: solid;
+                }
+
+                width: 100%;
+                height: 100%;
+                padding: 0 16px;
+                box-sizing: border-box;
+
+                border-radius: 2px;
+
+                margin: 0;
+                border: 0;
+                display: inline-block;
+                vertical-align: middle;
+                white-space: normal;
+                line-height: 1;
+
+                &:focus {
+                    outline: 0;
+                }
+            }
+        }
+    }
+    .window-footer {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .pin-login-buttons {
+        display: flex !important;
+        justify-content: space-between !important;
+        button {
+            width: auto;
+            height: auto;
+            text-transform: none;
+        }
+        :first-child {
+            order: 1;
+        }
+        :last-child {
+            order: 0;
+        }
+    }
+    .dialog-footer-text {
+        display: none;
+    }
+    .fast-login-header {
+        display: inherit !important;
+        .fast-login-text.pin-code-header {
+            padding: 10px 0 20px 0;
+        }
+    }
+    .on-cancel-button {
+        display: inherit !important;
+    }
+    .buttons-block {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap-reverse;
+        width: revert;
+    }
+}
+
+// fallback backdrop for browsers without backdrop-filter: blur.
+.backdrop-blur {
+    background-color: rgba(255, 255, 255);
+}
+
+@supports ((-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px))) {
+    .backdrop-blur {
+        background-color: transparent;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+}

@@ -1,0 +1,30 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use 'libs/common' as colors;
+
+@mixin mq-fast-authentication($theme, $typography) {
+    $accent: map.get($theme, accent);
+    $dark: mat.define-palette(colors.$mq-dark);
+
+    mq-fast-authentication {
+        color: mat.get-color-from-palette($accent, 900);
+        .auth-form-wrapper {
+            font-size: mat.font-size($typography, subheading-2);
+        }
+        .fast-login-title {
+            font-size: mat.font-size($typography, title);
+        }
+        div.mat-select-arrow-wrapper {
+            padding-right: 20px;
+            height: 57px;
+        }
+
+        .field-wrapper {
+            input {
+                color: mat.get-color-from-palette($accent, 900);
+                font-size: mat.font-size($typography, subheading-2);
+                background-color: mat.get-color-from-palette($accent, 100);
+            }
+        }
+    }
+}

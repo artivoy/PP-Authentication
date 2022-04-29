@@ -1,0 +1,22 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use 'libs/common' as colors;
+
+@mixin mq-pin-code-setup($theme, $typography) {
+    $primary: map.get($theme, primary);
+    $accent: map.get($theme, accent);
+
+    mq-pin-code-setup {
+        color: mat.get-color-from-palette($accent, 900);
+        .open-more-info {
+            color: mat.get-color-from-palette($primary, 400);
+        }
+        .field-wrapper {
+            input {
+                color: mat.get-color-from-palette($accent, 900);
+                background-color: mat.get-color-from-palette($accent, 200);
+                font-size: mat.font-size($typography, subheading-2);
+            }
+        }
+    }
+}

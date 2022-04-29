@@ -1,0 +1,24 @@
+@import 'src/lib/components/authentication/authentication-theme';
+@import 'src/lib/components/authentication-page/authentication-page-theme';
+@import 'src/lib/components/authentication-page-wrapper/authentication-page-wrapper-theme';
+@import 'src/lib/components/fast-authentication/fast-authentication-theme';
+@import 'src/lib/components/pin-code-setup/pin-code-setup-theme.component';
+@import 'src/lib/components/pin-code-authorization/pin-code-authorization-theme.component';
+
+@import 'src/lib/mobile/components/authentication.component.theme';
+
+@mixin theme($theme, $typography) {
+    @include mq-authentication($theme, $typography);
+    @include mq-authentication-page($theme, $typography);
+    @include mq-fast-authentication($theme, $typography);
+    @include mq-pin-code-authorization($theme, $typography);
+    @include mq-pin-code-setup($theme, $typography);
+
+    @include mq-authentication-page-wrapper($theme, $typography);
+}
+
+@mixin mobile-theme($theme, $typography) {
+    @include theme($theme, $typography);
+
+    @include mqm-authentication($theme, $typography);
+}

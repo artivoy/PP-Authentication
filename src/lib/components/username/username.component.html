@@ -1,0 +1,6 @@
+<ng-container [formGroup]="formGroup">
+    <mat-icon matPrefix>perm_identity</mat-icon>
+    <ng-container [formGroupName]="groupName">
+        <input type="text" matInput required [formControlName]="controlName" placeholder="User Name" />
+    </ng-container>
+</ng-container>
