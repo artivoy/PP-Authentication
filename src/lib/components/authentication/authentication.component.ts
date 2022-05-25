@@ -16,7 +16,7 @@ import {
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LastLoginService, MessagesService } from '@mq/common';
+import { LastLoginService, MessagesService } from '@app/common';
 import moment from 'moment';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { filter, finalize, first } from 'rxjs/operators';

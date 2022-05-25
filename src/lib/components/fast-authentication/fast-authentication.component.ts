@@ -10,7 +10,7 @@ import {
 import { FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LastLoginService, MessagesService } from '@mq/common';
+import { LastLoginService, MessagesService } from '@app/common';
 import { AuthenticationService } from '../../services/authentication.service';
 import { DeviceService } from '../../services/device.service';
 import { AuthenticationComponent } from '../authentication/authentication.component';

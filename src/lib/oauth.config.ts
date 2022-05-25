@@ -1,4 +1,4 @@
-import { Environment } from '@mq/common';
+import { Environment } from '@app/common';
 import { AuthConfig, OAuthModuleConfig } from 'angular-oauth2-oidc';
 
 export const oauthConfig: (e: Environment) => AuthConfig = (environment) => {

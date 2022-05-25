@@ -2,12 +2,12 @@ import { ComponentFixture, fakeAsync, flushMicrotasks, TestBed } from '@angular/
 
 import { By } from '@angular/platform-browser';
 import { OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
-import { runOnPushChangeDetection } from '@mq/common/testing';
-import { ApplicationStateService, ConfirmationDialogComponent, DebugMode, ENVIRONMENT, Environment } from '@mq/common';
+import { runOnPushChangeDetection } from '@app/common/testing';
+import { ApplicationStateService, ConfirmationDialogComponent, DebugMode, ENVIRONMENT, Environment } from '@app/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoggingService } from '@mq/common-interfaces';
+import { LoggingService } from '@app/common-interfaces';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationService } from '../../services/authentication.service';
 import { PrOAuthService } from '../../services/oauth.service';

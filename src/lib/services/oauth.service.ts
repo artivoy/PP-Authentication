@@ -8,12 +8,12 @@ import {
     Environment,
     ENVIRONMENT,
     MessagesService,
-} from '@mq/common';
+} from '@app/common';
 import { AuthConfig, OAuthErrorEvent, OAuthEvent, OAuthService } from 'angular-oauth2-oidc';
 import { filter, startWith } from 'rxjs/operators';
 import { Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ILoggingService, LoggingService } from '@mq/common-interfaces';
+import { ILoggingService, LoggingService } from '@app/common-interfaces';
 import { MatDialogRef } from '@angular/material/dialog';
 import { oauthConfig, oauthIsConfigured } from '../oauth.config';
 import { AuthenticationService } from './authentication.service';

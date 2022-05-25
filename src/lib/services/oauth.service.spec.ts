@@ -15,12 +15,12 @@ import {
     Environment,
     ENVIRONMENT,
     MessagesService,
-} from '@mq/common';
+} from '@app/common';
 import { LoginOptions, OAuthErrorEvent, OAuthEvent, OAuthService, TokenResponse } from 'angular-oauth2-oidc';
 import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { filter, scan } from 'rxjs/operators';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoggingService } from '@mq/common-interfaces';
+import { LoggingService } from '@app/common-interfaces';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './authentication.service';

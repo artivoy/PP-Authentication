@@ -2,8 +2,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { APP_NAME, APP_SHORT_NAME, ENVIRONMENT } from '@mq/common';
-import { MaterialModule } from '@mq/material-module';
+import { APP_NAME, APP_SHORT_NAME, ENVIRONMENT } from '@app/common';
+import { MaterialModule } from '@app/material-module';
 import { AuthenticationService } from '../../services/authentication.service';
 
 import { AuthenticationPageWrapperComponent } from './authentication-page-wrapper.component';

@@ -7,7 +7,7 @@ import {
     ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import { APP_SHORT_NAME, Environment, ENVIRONMENT, ThemingService } from '@mq/common';
+import { APP_SHORT_NAME, Environment, ENVIRONMENT, ThemingService } from '@app/common';
 import { shareReplay } from 'rxjs/operators';
 import { EAuthenticationFormType } from '../../models/form-type';
 import { AuthenticationService } from '../../services/authentication.service';

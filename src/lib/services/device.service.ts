@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
-import { Utils } from '@mq/common';
+import { Utils } from '@app/common';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 const DEVICE_ID = 'deviceId';

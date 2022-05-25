@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { Inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Environment, ENVIRONMENT } from '@mq/common';
-import { MessagesService } from '@mq/common';
+import { Environment, ENVIRONMENT } from '@app/common';
+import { MessagesService } from '@app/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { PrOAuthService } from '../services/oauth.service';
 

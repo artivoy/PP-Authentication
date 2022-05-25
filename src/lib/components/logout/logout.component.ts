@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { ENVIRONMENT, Environment } from '@mq/common';
+import { ENVIRONMENT, Environment } from '@app/common';
 
 @Component({
     selector: 'mq-logout',

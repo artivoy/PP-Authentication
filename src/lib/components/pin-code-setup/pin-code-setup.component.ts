@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, Optional, ViewEn
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { apiInfo, LastLoginService, MessagesService } from '@mq/common';
+import { apiInfo, LastLoginService, MessagesService } from '@app/common';
 import { BehaviorSubject } from 'rxjs';
 import { EAuthenticationFormType } from '../../models/form-type';
 import { EResponseStatus } from '../../models/status';

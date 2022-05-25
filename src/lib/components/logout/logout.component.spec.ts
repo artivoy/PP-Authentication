@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ENVIRONMENT } from '@mq/common';
+import { ENVIRONMENT } from '@app/common';
 
 import { LogoutComponent } from './logout.component';
 

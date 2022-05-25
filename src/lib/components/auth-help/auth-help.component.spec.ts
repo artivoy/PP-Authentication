@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { APP_NAME, ENVIRONMENT, MessagesService } from '@mq/common';
-import { MaterialModule } from '@mq/material-module';
+import { APP_NAME, ENVIRONMENT, MessagesService } from '@app/common';
+import { MaterialModule } from '@app/material-module';
 import { AuthenticationService } from '../../services/authentication.service';
 
 import { AuthHelpComponent } from './auth-help.component';

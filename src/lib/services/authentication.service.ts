@@ -22,8 +22,8 @@ import {
     ICommonEvent,
     MessagesService,
     PersonUtils,
-} from '@mq/common';
-import { PermissionService } from '@mq/permissions';
+} from '@app/common';
+import { PermissionService } from '@app/permissions';
 import moment from 'moment';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, finalize, share, take } from 'rxjs/operators';

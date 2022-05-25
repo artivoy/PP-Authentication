@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, Input, ViewEncapsulation } from '@angular/core';
-import { APP_SHORT_NAME, ThemingService } from '@mq/common';
+import { APP_SHORT_NAME, ThemingService } from '@app/common';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
